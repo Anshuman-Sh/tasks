@@ -13,7 +13,7 @@ function App() {
     const fetchData = async () => {
       try {
         const response = await axios.get(API_BASE_URL);
-        console.log(response.data);
+        // console.log(response.data);
         setTasks(response.data);
       } catch (error) {
         console.error("Error fetching tasks:", error);
@@ -50,9 +50,7 @@ function App() {
 
   async function completedTask(id) {
     try {
-      const response = await axios.patch(
-        API_BASE_URL + `/completedTask/${id}`,
-      );
+      const response = await axios.patch(API_BASE_URL + `/completedTask/${id}`);
       console.log(response);
       // window.location.reload();
     } catch (error) {
@@ -73,24 +71,26 @@ function App() {
         {isClick ? (
           <AddTask add={addTask} />
         ) : (
-          <button id="create" onClick={handleClick}>
+          <button className="btn btn-primary" onClick={handleClick}>
             Add
           </button>
         )}
       </div>
-      {tasks.map((task) => {
-        return (
-          <Tasks
-            key={task.id}
-            id={task.id}
-            title={task.title}
-            description={task.description}
-            completed={task.completed}
-            delete={deleteTask}
-            complete={completedTask}
-          />
-        );
-      })}
+      <div className="tasks-grid">
+        {tasks.map((task) => {
+          return (
+            <Tasks
+              key={task.id}
+              id={task.id}
+              title={task.title}
+              description={task.description}
+              completed={task.completed}
+              delete={deleteTask}
+              complete={completedTask}
+            />
+          );
+        })}
+      </div>
     </>
   );
 }

@@ -17,7 +17,7 @@ function AddTask(props) {
   }
 
   return (
-    <div className="container">
+    <>
       <div className="inputArea">
         <form>
           <div className="mb-3">
@@ -29,7 +29,7 @@ function AddTask(props) {
               id="title"
               name="title"
               placeholder="Title"
-              required="true"
+              required={true}
             />
           </div>
           <div className="mb-3">
@@ -42,11 +42,10 @@ function AddTask(props) {
               id="description"
               name="description"
               placeholder="Description"
-              required="true"
+              required={true}
             ></textarea>
           </div>
           <button
-            id="add"
             type="submit"
             className="btn btn-primary"
             onClick={() => {
@@ -57,7 +56,7 @@ function AddTask(props) {
           </button>
         </form>
       </div>
-    </div>
+    </>
   );
 }
 

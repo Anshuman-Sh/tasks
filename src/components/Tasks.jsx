@@ -12,14 +12,10 @@ function Tasks(props) {
   }
 
   return (
-    <div className="container">
+    <>
       <div className="taskContainer">
-        <div className="title">
-          <h4>{props.title}</h4>
-        </div>
-        <div className="desc">
-          <p>{props.description}</p>
-        </div>
+        <h4 id="title">{props.title}</h4>
+        <p id="description">{props.description}</p>
         <div className="delete">
           <button
             id="delete-button"
@@ -46,7 +42,7 @@ function Tasks(props) {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

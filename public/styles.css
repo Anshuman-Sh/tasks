@@ -1,5 +1,13 @@
-html {
-  font-family: "Montserrat", sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --font-1: "Montserrat", sans-serif;
+  --font-2: "Poppins", sans-serif;
+  --font-3: "McLaren", cursive;
 }
 
 body {
@@ -8,67 +16,33 @@ body {
 
 .header {
   background-color: cadetblue;
-  padding: 8px 16px;
+  padding: 10px 16px;
   text-align: center;
   margin-bottom: 10px;
 }
 
-#create {
-  padding: 5px 15px;
-  border-radius: 10px;
-  border: 1px dashed white;
-  background-color: dodgerblue;
-  color: white;
-  font-size: 14px;
-  transition: background-color 0.2s;
-}
-
-#create:hover {
-  cursor: pointer;
-  background-color: rgb(21, 111, 201);
-}
-
 .inputArea {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5px;
 }
 
 input {
-  font-family: "McLaren", cursive;
-  border: 2px dashed cadetblue;
-  width: 350px;
-  @media (max-width: 450px) {
-    width: 250px;
-  }
+  font-family: var(--font-1);
 }
 
 textarea {
-  border: 2px dashed cadetblue;
-  font-family: "McLaren", cursive;
-  @media (max-width: 450px) {
-    width: 250px;
-  }
+  font-family: var(--font-2);
 }
 
-#add {
-  width: 500px;
-  border-radius: 10px;
-  padding: 3px 10px;
-  background-color: dodgerblue;
-  border: 1px dashed white;
-  font-size: 20px;
-  transition: background-color 0.2s;
-  @media (max-width: 450px) {
-    width: 250px;
-  }
-}
-
-#add:hover {
-  cursor: pointer;
-  background-color: rgb(21, 111, 201);
+.tasks-grid {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-rows: 300px;
+  overflow: auto;
+  gap: 10px;
+  padding: 20px;
 }
 
 .taskContainer {
@@ -77,22 +51,25 @@ textarea {
   border: 1px solid black;
   border-radius: 20px;
   box-shadow: 1px 1px 5px inset black;
-  width: 350px;
-  height: 200px;
-  padding-left: 20px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  float: left;
-  margin-top: 40px;
-  margin-right: 20px;
+  padding: 20px;
   overflow: auto;
   padding-right: 85px;
+  font-size: 20px;
+}
+
+#title {
+  font-size: 1em;
+}
+
+#description {
+  font-size: 0.75em;
 }
 
 .delete {
   position: absolute;
   top: 6px;
   right: 8px;
+  font-size: 0.75em;
 }
 
 #delete-button {
@@ -100,14 +77,15 @@ textarea {
   color: white;
   border: none;
   border-radius: 5px;
-  font-size: 12px;
+  font-size: 0.75em;
   font-weight: bold;
   padding: 3px 6px;
-  transition: background-color 0.2s;
+  transition: opacity 0.2s;
 }
 
-#delete-button:hover {
-  background-color: rgb(199, 11, 11);
+#delete-button:hover,
+.completed-checkbox:hover {
+  opacity: 0.7;
 }
 
 .completed-checkbox {
@@ -122,4 +100,15 @@ textarea {
   font-size: 12px;
   font-weight: bold;
   padding: 3px 6px;
+  transition: opacity 0.2s;
+}
+
+@media (max-width: 400px) {
+  .taskContainer {
+    font-size: 16px;
+  }
+
+  .tasks-grid {
+    grid-template-columns: 1fr;
+  }
 }
